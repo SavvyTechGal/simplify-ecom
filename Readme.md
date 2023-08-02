@@ -8,6 +8,9 @@ cmd: psql -U postgres simplify_db
 
 where postgres = username and simplify_db = database_name 
 
+
+## To use Python Code:
+
 ## Create a Virtual Environment
 cmd: python3 -m venv venv
 
