@@ -1,4 +1,4 @@
-### How to Run 
+# How to Run 
 ## Install:
 https://tableplus.com/blog/2018/09/getting-started-with-postgresql-on-mac.html
 Tableplus and DBngin 
