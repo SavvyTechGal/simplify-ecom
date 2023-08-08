@@ -33,24 +33,15 @@ try:
     # cursor.execute(create_table_query)
     # print("Table created successfully.")
 
-    # create_table_query = """
-    # CREATE TABLE franchise (
-    # loc VARCHAR(32),
-    # rev INTEGER,
-    # fr VARCHAR(32)
-    # );
-    # """ 
-    # cursor.execute(create_table_query)
-    # print("Table created successfully.")
 ########################################
 
 ########################################
     # Load data from a CSV file into a table
-    load_query = """
-    COPY franchise FROM '/Users/savana/Desktop/Clean Desktop/school/project/franchise.csv' WITH CSV HEADER;
-    """
-    cursor.execute(load_query)
-    print("CSV data loaded successfully.")
+    # load_query = """
+    # COPY franchise FROM '/Users/savana/Desktop/Clean Desktop/school/project/franchise.csv' WITH CSV HEADER;
+    # """
+    # cursor.execute(load_query)
+    # print("CSV data loaded successfully.")
 
 ########################################
 

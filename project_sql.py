@@ -105,60 +105,6 @@ try:
 
 ########################################
 
-# ########################################
-#     ## Example: drop a table
-#     drop_table_query = """
-#     DROP TABLE person_table;
-#     """
-#     cursor.execute(drop_table_query)
-#     print("Table dropped successfully.")
-# ########################################
-
-# ########################################
-#     ## Example: insert a row
-#     insert_row_query = """
-#     INSERT INTO person_table (name, age, is_parent)
-#     VALUES ('Dan', 14, FALSE), ('Mary', 20, FALSE)
-#     ;
-#     """
-#     cursor.execute(insert_row_query)
-#     print("Row inserted successfully.")
-# ########################################
-
-# ########################################
-#     ## Example: update a row
-#     update_row_query = """
-#     UPDATE person_table
-#     SET age = 36
-#     WHERE name = 'John';
-#     """
-#     cursor.execute(update_row_query)
-#     print("Row updated successfully.")
-# ########################################
-
-# ########################################
-#     ## Example: delete a row
-#     delete_row_query = """
-#     DELETE FROM person_table
-#     WHERE name = 'John';
-#     """
-#     cursor.execute(delete_row_query)
-#     print("Row deleted successfully.")
-# ########################################
-
-# ########################################
-#     ## Example: select rows
-#     select_rows_query = """
-#     SELECT * FROM person_table;
-#     """
-#     cursor.execute(select_rows_query)
-#     rows = cursor.fetchall()
-    
-#     for row in rows:
-#         print(row)
-########################################
-
-
     # Commit the changes
     connection.commit()
     # Close the cursor and connection
