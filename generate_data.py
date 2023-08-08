@@ -24,7 +24,7 @@ def generate_dummy_data(num_records):
         business_sub_start_date = random_timestamp()
         business_sub_end_date = business_sub_start_date + timedelta(days=random.randint(30, 365))
         subscription_id = fake.random_int(min=100000, max=999999)
-        subscription_name = fake.word()
+        subscription_name = random.choice(['Standard', 'Premium', 'Ultra'])
         subscription_order_max = random.randint(100, 500)
         subscription_monthly_price = random.randint(20, 100)
         subscription_yearly_price = subscription_monthly_price * 12
