@@ -21,6 +21,6 @@ cmd: source venv/bin/activate
 cmd: python3 -m pip install -r requirements.txt
 
 ## Run code
-cmd: python3 -m sql
+cmd: python3 -m file_name_here
 
 
