@@ -16,11 +16,13 @@ CREATE TABLE Subscription_Type (
 
 -- Creating Subscription table
 CREATE TABLE Subscription (
-    Subscription_ID SERIAL PRIMARY KEY,
+    Subscription_ID SERIAL,
     Business_ID INT,
     Subscription_Type_ID INT,
     Start_Date TIMESTAMP,
     End_Date TIMESTAMP,
+    Updated_At TIMESTAMP,
+    PRIMARY KEY (Subscription_ID, Business_ID, Subscription_Type_ID, Start_Date),
     FOREIGN KEY (Business_ID) REFERENCES Business(Business_ID),
     FOREIGN KEY (Subscription_Type_ID) REFERENCES Subscription_Type(Subscription_Type_ID)
 );
@@ -85,5 +87,33 @@ CREATE TABLE Business_Order_Address (
     FOREIGN KEY (Business_ID, Order_ID) REFERENCES Business_Order(Business_ID, Order_ID)
 );
 
+-- Creating Business_Product table
+CREATE TABLE Business_Product (
+    Business_ID INT,
+    Product_ID SERIAL,
+    Title VARCHAR(32),
+    Sku VARCHAR(16),
+    Amount DOUBLE PRECISION,
+    Cost DOUBLE PRECISION,
+    Description VARCHAR(256),
+    Created_At TIMESTAMP,
+    Updated_At TIMESTAMP,
+    PRIMARY KEY (Business_ID, Product_ID),
+    FOREIGN KEY (Business_ID) REFERENCES Business(Business_ID),
+    FOREIGN KEY (Product_ID) REFERENCES Product(Product_ID)
+);
 
-
+-- Creating Business_Order_lineitem table
+CREATE TABLE Business_Order_lineitem (
+    Business_ID INT,
+    Lineitem_ID SERIAL,
+    Discount_Amount DOUBLE PRECISION,
+    Quantity INT,
+    Tax DOUBLE PRECISION,
+    Order_ID INT,
+    Product_ID INT,
+    PRIMARY KEY (Business_ID, Lineitem_ID),
+    FOREIGN KEY (Business_ID) REFERENCES Business(Business_ID),
+    FOREIGN KEY (Business_ID, Order_ID) REFERENCES Business_Order(Business_ID, Order_ID),
+    FOREIGN KEY (Business_ID, Product_ID) REFERENCES Product(Business_ID, Product_ID)
+);

@@ -6,6 +6,7 @@ FROM raw_table rt
 LEFT JOIN Business b ON rt.Business_Name = b.Name AND rt.Business_URL = b.URL
 WHERE b.Business_ID IS NULL;
 
+-- This allows to insert only new subscription_types not already in the database from the raw_table
 INSERT INTO Subscription_Type (Name, Order_Max, Monthly_Price, Yearly_Price)
 SELECT DISTINCT rt.Subscription_Name, rt.Subscription_Order_Max, rt.Subscription_Monthly_Price, rt.Subscription_Yearly_Price
 FROM raw_table rt
