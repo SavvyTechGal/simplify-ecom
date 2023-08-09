@@ -129,15 +129,22 @@ COMMIT;
 
 -- business_customer
 INSERT INTO Business_Customer (Business_ID, Customer_ID)
-SELECT
+SELECT DISTINCT
     b.Business_ID,
     cp.Customer_ID
 FROM
-    raw_table raw
-JOIN Business b ON raw.Business_Name = b.Name
-JOIN Customer_Profile cp ON raw.Customer_Email = cp.Email;
+    Business b
+JOIN Business_Order bo ON b.Business_ID = bo.Business_ID
+JOIN Customer_Profile cp ON bo.Customer_ID = cp.Customer_ID
+WHERE
+    NOT EXISTS (
+        SELECT 1
+        FROM Business_Customer bc
+        WHERE bc.Business_ID = b.Business_ID
+        AND bc.Customer_ID = cp.Customer_ID
+    );
 
-
+-- order table
 INSERT INTO Business_Order (Business_ID, Customer_ID, Shipping_Amount_Paid, Shipping_Cost, Total_Refund, Discount_Code, Financial_Status, Created_At, Fulfilled_At, Cancelled_At)
 SELECT 
     b.Business_ID,
@@ -154,7 +161,7 @@ FROM
     raw_table raw
 JOIN Business b ON raw.Business_Name = b.Name
 JOIN Customer_Profile cp ON raw.Customer_Email = cp.Email
-LEFT JOIN Business_Order bo ON b.Business_ID = bo.Business_ID AND raw.Order_ID = bo.Order_ID
+LEFT JOIN Business_Order bo ON b.Business_ID = bo.Business_ID
 WHERE bo.Order_ID IS NULL;
 
 
