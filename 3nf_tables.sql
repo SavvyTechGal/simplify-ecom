@@ -16,15 +16,15 @@ CREATE TABLE Subscription_Type (
 
 -- Creating Subscription table
 CREATE TABLE Subscription (
-    Subscription_ID SERIAL,
+    Subscription_ID SERIAL PRIMARY KEY,
     Business_ID INT,
     Subscription_Type_ID INT,
     Start_Date TIMESTAMP,
     End_Date TIMESTAMP,
     Updated_At TIMESTAMP,
-    PRIMARY KEY (Subscription_ID, Business_ID, Subscription_Type_ID, Start_Date),
     FOREIGN KEY (Business_ID) REFERENCES Business(Business_ID),
-    FOREIGN KEY (Subscription_Type_ID) REFERENCES Subscription_Type(Subscription_Type_ID)
+    FOREIGN KEY (Subscription_Type_ID) REFERENCES Subscription_Type(Subscription_Type_ID),
+    CONSTRAINT unique_subscription_combination UNIQUE (Business_ID, Subscription_Type_ID, Start_Date)
 );
 
 -- Creating Customer_Profile table
