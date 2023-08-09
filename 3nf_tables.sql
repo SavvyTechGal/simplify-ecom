@@ -38,7 +38,7 @@ CREATE TABLE Customer_Profile (
 );
 
 -- Creating Business_Customers linker table
-CREATE TABLE Business_Customer (
+CREATE TABLE Business_Customer(
     Business_ID INT,
     Customer_ID INT,
     PRIMARY KEY (Business_ID, Customer_ID),
@@ -65,6 +65,7 @@ CREATE TABLE Business_Order (
     FOREIGN KEY (Business_ID, Customer_ID) REFERENCES Business_Customer(Business_ID, Customer_ID)
 );
 
+
 -- Creating Address table
 CREATE TABLE Address (
     Address_ID SERIAL PRIMARY KEY,
@@ -75,6 +76,7 @@ CREATE TABLE Address (
     Line2 VARCHAR(64),
     Updated_At TIMESTAMP
 );
+
 
 -- Creating Business_Order_Address table
 CREATE TABLE Business_Order_Address (
@@ -101,6 +103,7 @@ CREATE TABLE Business_Product (
     PRIMARY KEY (Business_ID, Product_ID),
     FOREIGN KEY (Business_ID) REFERENCES Business(Business_ID)
 );
+
 
 -- Creating Business_Order_lineitem table
 CREATE TABLE Business_Order_lineitem (

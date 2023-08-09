@@ -55,6 +55,9 @@ CREATE TABLE raw_table (
     Product_Sku VARCHAR(16)
 );
 
+COPY raw_table FROM '/home/david/simplify2/dummy_data.csv' WITH CSV HEADER;
+
+
 CREATE TABLE Business (
     Business_ID SERIAL PRIMARY KEY,
     Name VARCHAR(32) UNIQUE,
@@ -115,8 +118,34 @@ WHERE NOT EXISTS (
 );
 
 
+CREATE TABLE Business_Product (
+    Business_ID INT,
+    Product_ID SERIAL,
+    Title VARCHAR(32),
+    Sku VARCHAR(16),
+    Amount DOUBLE PRECISION,
+    Cost DOUBLE PRECISION,
+    Description VARCHAR(256),
+    Created_At TIMESTAMP,
+    Updated_At TIMESTAMP,
+    PRIMARY KEY (Business_ID, Product_ID),
+    FOREIGN KEY (Business_ID) REFERENCES Business(Business_ID)
+);
 
 
+INSERT INTO Business_Product (Business_ID, Title, Sku, Amount, Cost, Description)
+SELECT 
+    b.Business_ID,
+    raw.Product_Title,
+    raw.Product_Sku,
+    raw.Product_Amount,
+    raw.Product_Cost,
+    raw.Product_Description
+FROM
+    raw_table raw
+JOIN Business b ON raw.Business_Name = b.Name
+LEFT JOIN Business_Product bp ON b.Business_ID = bp.Business_ID
+WHERE bp.Product_ID IS NULL;
 
 
 

@@ -86,4 +86,51 @@ GROUP BY r.Customer_Name, r.Customer_Email, r.Customer_Phone;
 COMMIT;
 
 
+INSERT INTO Business_Product (Business_ID, Title, Sku, Amount, Cost, Description)
+SELECT 
+    b.Business_ID,
+    raw.Product_Title,
+    raw.Product_Sku,
+    raw.Product_Amount,
+    raw.Product_Cost,
+    raw.Product_Description
+FROM
+    raw_table raw
+JOIN Business b ON raw.Business_Name = b.Name
+LEFT JOIN Business_Product bp ON b.Business_ID = bp.Business_ID
+WHERE bp.Product_ID IS NULL;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
