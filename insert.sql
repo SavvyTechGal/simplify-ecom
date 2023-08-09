@@ -128,6 +128,17 @@ WHERE bp.Product_ID IS NULL;
 COMMIT;
 
 
+INSERT INTO Business_Customer (Business_ID, Customer_ID)
+SELECT
+    b.Business_ID,
+    cp.Customer_ID
+FROM
+    raw_table raw
+JOIN Business b ON raw.Business_Name = b.Name
+JOIN Customer_Profile cp ON raw.Customer_Email = cp.Email;
+
+
+
 
 
 
