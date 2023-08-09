@@ -12,18 +12,24 @@ FROM raw_table rt
 LEFT JOIN Subscription_Type st ON rt.Subscription_Name = st.Name
 WHERE st.Subscription_Type_ID IS NULL;
 
-
--- INSERT INTO Subscription (Business_ID, Subscription_Type_ID, Start_Date, End_Date)
--- SELECT
---     b.Business_ID,
---     st.Subscription_Type_ID,
---     raw.Subscription_Start_Date,
---     raw.Subscription_End_Date
--- FROM
---     raw_table raw
---     JOIN Business b ON raw.Business_Name = b.Name
---     JOIN Subscription_Type st ON raw.Subscription_Name = st.Name;
-
+INSERT INTO Subscription (Business_ID, Subscription_Type_ID, Start_Date, End_Date)
+SELECT
+    b.Business_ID,
+    st.Subscription_Type_ID,
+    raw.Business_Sub_Start_Date,
+    raw.Business_Sub_End_Date
+FROM
+    raw_table raw
+LEFT JOIN Business b ON raw.Business_Name = b.Name
+LEFT JOIN Subscription_Type st ON raw.Subscription_Name = st.Name
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM Subscription s
+    WHERE s.Business_ID = b.Business_ID
+    AND s.Subscription_Type_ID = st.Subscription_Type_ID
+    AND s.Start_Date = raw.Business_Sub_Start_Date
+    AND s.End_Date = raw.Business_Sub_End_Date
+);
 
 
 
