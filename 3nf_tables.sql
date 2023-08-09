@@ -44,17 +44,6 @@ CREATE TABLE Business_Customer (
     FOREIGN KEY (Customer_ID) REFERENCES Customer_Profile(Customer_ID)
 );
 
--- Creating Address table
-CREATE TABLE Address (
-    Address_ID SERIAL PRIMARY KEY,
-    Country VARCHAR(32),
-    State VARCHAR(16),
-    Zip VARCHAR(16),
-    Line1 VARCHAR(64),
-    Line2 VARCHAR(64),
-    Updated_At TIMESTAMP
-);
-
 
 -- Creating Business_Order table
 CREATE TABLE Business_Order (
@@ -73,3 +62,28 @@ CREATE TABLE Business_Order (
     FOREIGN KEY (Business_ID) REFERENCES Business(Business_ID),
     FOREIGN KEY (Business_ID, Customer_ID) REFERENCES Business_Customer(Business_ID, Customer_ID)
 );
+
+-- Creating Address table
+CREATE TABLE Address (
+    Address_ID SERIAL PRIMARY KEY,
+    Country VARCHAR(32),
+    State VARCHAR(16),
+    Zip VARCHAR(16),
+    Line1 VARCHAR(64),
+    Line2 VARCHAR(64),
+    Updated_At TIMESTAMP
+);
+
+-- Creating Business_Order_Address table
+CREATE TABLE Business_Order_Address (
+    Address_ID INT,
+    Type VARCHAR(8),
+    Business_ID INT,
+    Order_ID INT,
+    PRIMARY KEY (Address_ID, Type, Business_ID, Order_ID),
+    FOREIGN KEY (Address_ID) REFERENCES Address(Address_ID),
+    FOREIGN KEY (Business_ID, Order_ID) REFERENCES Business_Order(Business_ID, Order_ID)
+);
+
+
+
