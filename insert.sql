@@ -1,4 +1,4 @@
-
+--BUSINESS
 -- This allows to insert only new businesses not already in the database from the raw_table
 INSERT INTO Business (Name, URL)
 SELECT DISTINCT rt.Business_Name, rt.Business_URL
@@ -6,6 +6,7 @@ FROM raw_table rt
 LEFT JOIN Business b ON rt.Business_Name = b.Name AND rt.Business_URL = b.URL
 WHERE b.Business_ID IS NULL;
 
+--SUBSCRIPTION_TYPE
 -- This allows to insert only new subscription types not already in the database from the raw_table
 INSERT INTO Subscription_Type (Name, Order_Max, Monthly_Price, Yearly_Price)
 SELECT DISTINCT rt.Subscription_Name, rt.Subscription_Order_Max, rt.Subscription_Monthly_Price, rt.Subscription_Yearly_Price
@@ -14,7 +15,7 @@ LEFT JOIN Subscription_Type st ON rt.Subscription_Name = st.Name
 WHERE st.Subscription_Type_ID IS NULL;
 
 
-
+--SUBSCRIPTION
 BEGIN;
 -- This allows to update existing subscriptions in the database from the raw_table, it will only update the end date and updated at
 UPDATE Subscription AS s
@@ -62,6 +63,7 @@ GROUP BY
 COMMIT;
 
 
+--CUSTOMER PROFILE
 BEGIN;
 -- Update existing records in Customer_Profile
 UPDATE Customer_Profile cp
@@ -78,8 +80,8 @@ SELECT DISTINCT
     r.Customer_Name,
     r.Customer_Email,
     r.Customer_Phone,
-    MIN(r.Customer_First_Order_Date) AS Created_At,
-    MAX(r.Customer_Last_Order_Date) AS Updated_At
+    MIN(r.Order_Creation_Date) AS Created_At,
+    CURRENT_TIMESTAMP
 FROM raw_table r
 LEFT JOIN Customer_Profile cp ON r.Customer_Email = cp.Email
 WHERE cp.Email IS NULL
@@ -87,20 +89,43 @@ GROUP BY r.Customer_Name, r.Customer_Email, r.Customer_Phone;
 
 COMMIT;
 
+--PRODUCT
+BEGIN;
 
-INSERT INTO Business_Product (Business_ID, Title, Sku, Amount, Cost, Description)
+-- Update existing products
+UPDATE Business_Product bp
+SET
+    Title = raw.Product_Title,
+    Sku = raw.Product_Sku,
+    Amount = raw.Product_Amount,
+    Cost = raw.Product_Cost,
+    Description = raw.Product_Description,
+    Updated_At = CURRENT_TIMESTAMP
+FROM
+    raw_table raw
+JOIN Business b ON raw.Business_Name = b.Name
+WHERE
+    bp.Business_ID = b.Business_ID
+    AND bp.SKU = raw.PRODUCT_SKU;
+
+-- Insert new products
+INSERT INTO Business_Product (Business_ID, Title, Sku, Amount, Cost, Description, Created_At, Updated_At)
 SELECT 
     b.Business_ID,
     raw.Product_Title,
     raw.Product_Sku,
     raw.Product_Amount,
     raw.Product_Cost,
-    raw.Product_Description
+    raw.Product_Description,
+    CURRENT_TIMESTAMP,
+    CURRENT_TIMESTAMP
 FROM
     raw_table raw
 JOIN Business b ON raw.Business_Name = b.Name
 LEFT JOIN Business_Product bp ON b.Business_ID = bp.Business_ID
 WHERE bp.Product_ID IS NULL;
+
+COMMIT;
 
 
 
