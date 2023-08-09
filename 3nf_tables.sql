@@ -36,7 +36,7 @@ CREATE TABLE Customer_Profile (
 );
 
 -- Creating Business_Customers linker table
-CREATE TABLE Business_Customers (
+CREATE TABLE Business_Customer (
     Business_ID INT,
     Customer_ID INT,
     PRIMARY KEY (Business_ID, Customer_ID),
