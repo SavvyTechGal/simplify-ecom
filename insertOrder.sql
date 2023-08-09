@@ -143,8 +143,9 @@ SELECT
     raw.Product_Description
 FROM
     raw_table raw
-Left JOIN Business b ON raw.Business_Name = b.Name;
-
+JOIN Business b ON raw.Business_Name = b.Name
+LEFT JOIN Business_Product bp ON b.Business_ID = bp.Business_ID
+WHERE bp.Product_ID IS NULL;
 
 
 
