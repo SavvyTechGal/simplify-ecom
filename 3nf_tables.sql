@@ -1,8 +1,8 @@
 -- Creating Business table
 CREATE TABLE Business (
     Business_ID SERIAL PRIMARY KEY,
-    Name VARCHAR(32),
-    URL VARCHAR(32)
+    Name VARCHAR(32) UNIQUE,
+    URL VARCHAR(32) UNIQUE
 );
 
 -- Creating Subscription_Type table
@@ -71,5 +71,5 @@ CREATE TABLE Business_Order (
     Cancelled_At TIMESTAMP,
     PRIMARY KEY (Business_ID, Order_ID),
     FOREIGN KEY (Business_ID) REFERENCES Business(Business_ID),
-    FOREIGN KEY (Business_ID, Customer_ID) REFERENCES Business_Customers(Business_ID, Customer_ID)
+    FOREIGN KEY (Business_ID, Customer_ID) REFERENCES Business_Customer(Business_ID, Customer_ID)
 );
