@@ -151,6 +151,32 @@ JOIN Business b ON raw.Business_Name = b.Name
 LEFT JOIN Business_Product bp ON b.Business_ID = bp.Business_ID
 WHERE bp.Product_ID IS NULL;
 
+CREATE TABLE Customer_Profile (
+    Customer_ID SERIAL PRIMARY KEY,
+    Name VARCHAR(32),
+    Email VARCHAR(32) UNIQUE,
+    Phone VARCHAR(32) UNIQUE,
+    Created_At TIMESTAMP,
+    Updated_At TIMESTAMP
+);
+
+INSERT INTO Customer_Profile (Name, Email, Phone, Created_At, Updated_At)
+SELECT DISTINCT
+    r.Customer_Name,
+    r.Customer_Email,
+    r.Customer_Phone,
+    MIN(r.Order_Creation_Date) AS Created_At,
+    CURRENT_TIMESTAMP
+FROM raw_table r
+LEFT JOIN Customer_Profile cp ON r.Customer_Email = cp.Email
+WHERE cp.Email IS NULL
+GROUP BY r.Customer_Name, r.Customer_Email, r.Customer_Phone;
+
+
+
+
+
+
 
 
 

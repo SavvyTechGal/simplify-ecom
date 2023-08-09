@@ -74,7 +74,7 @@ FROM raw_table r
 WHERE cp.Email = r.Customer_Email;
 
 
--- Insert onlhy new records into Customer_Profile
+-- Insert only new records into Customer_Profile
 INSERT INTO Customer_Profile (Name, Email, Phone, Created_At, Updated_At)
 SELECT DISTINCT
     r.Customer_Name,
