@@ -55,6 +55,9 @@ CREATE TABLE raw_table (
     Product_Sku VARCHAR(16)
 );
 
+COPY raw_table FROM '/home/david/simplify2/dummy_data.csv' WITH CSV HEADER;
+
+
 CREATE TABLE Business (
     Business_ID SERIAL PRIMARY KEY,
     Name VARCHAR(32) UNIQUE,

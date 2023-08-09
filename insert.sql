@@ -4,6 +4,7 @@ FROM raw_table rt
 LEFT JOIN Business b ON rt.Business_Name = b.Name AND rt.Business_URL = b.URL
 WHERE b.Business_ID IS NULL;
 
+
 -- This allows to insert only new businesses not already in the database from the raw_table
 
 INSERT INTO Subscription_Type (Name, Order_Max, Monthly_Price, Yearly_Price)
@@ -11,6 +12,9 @@ SELECT DISTINCT rt.Subscription_Name, rt.Subscription_Order_Max, rt.Subscription
 FROM raw_table rt
 LEFT JOIN Subscription_Type st ON rt.Subscription_Name = st.Name
 WHERE st.Subscription_Type_ID IS NULL;
+
+
+
 
 INSERT INTO Subscription (Business_ID, Subscription_Type_ID, Start_Date, End_Date, Updated_At)
 SELECT
@@ -31,6 +35,12 @@ WHERE NOT EXISTS (
     AND s.Start_Date = rt.Business_Sub_Start_Date
     AND s.End_Date = rt.Business_Sub_End_Date
 );
+
+
+
+INSERT INTO Address (Country, State, Zip, Line1, Line2, Updated_At)
+SELECT DISTINCT 
+
 
 
 
