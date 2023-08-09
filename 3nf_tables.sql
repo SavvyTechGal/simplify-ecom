@@ -65,6 +65,8 @@ CREATE TABLE Business_Order (
     FOREIGN KEY (Business_ID, Customer_ID) REFERENCES Business_Customer(Business_ID, Customer_ID)
 );
 
+-- have an updated column for when an order is updated Created_At ,Fulfilled_At ,Cancelled_At
+
 
 -- Creating Address table
 CREATE TABLE Address (
