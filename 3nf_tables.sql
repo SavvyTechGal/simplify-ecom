@@ -121,3 +121,5 @@ CREATE TABLE Business_Order_lineitem (
     FOREIGN KEY (Business_ID, Order_ID) REFERENCES Business_Order(Business_ID, Order_ID),
     FOREIGN KEY (Business_ID, Product_ID) REFERENCES Business_Product(Business_ID, Product_ID)
 );
+
+

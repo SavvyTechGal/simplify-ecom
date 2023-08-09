@@ -182,6 +182,25 @@ COMMIT;
 
 
 
+INSERT INTO Business_Order_lineitem (Business_ID, Discount_Amount, Quantity, Tax, Order_ID, Product_ID)
+SELECT
+    b.Business_ID,
+    raw.Lineitem_Discount_Amount,
+    raw.Lineitem_Quantity,
+    raw.Linetem_Tax,
+    bo.Order_ID,
+    bp.Product_ID
+FROM
+    raw_table raw
+JOIN Business b ON raw.Business_Name = b.Name
+JOIN Business_Order bo ON b.Business_ID = bo.Business_ID 
+JOIN Business_Product bp ON b.Business_ID = bp.Business_ID 
+LEFT JOIN Business_Order_lineitem bol ON b.Business_ID = bol.Business_ID AND raw.Lineitem_Discount_Amount = bol.Discount_Amount
+                                        AND raw.Lineitem_Quantity = bol.Quantity
+                                        AND raw.Linetem_Tax = bol.Tax
+                                        AND bo.Order_ID = bol.Order_ID
+                                        AND bp.Product_ID = bol.Product_ID
+WHERE bol.Lineitem_ID IS NULL;
 
 
 
