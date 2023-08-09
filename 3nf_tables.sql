@@ -8,7 +8,7 @@ CREATE TABLE Business (
 -- Creating Subscription_Type table
 CREATE TABLE Subscription_Type (
     Subscription_Type_ID SERIAL PRIMARY KEY,
-    Name VARCHAR(32),
+    Name VARCHAR(32) UNIQUE,
     Order_Max INT,
     Monthly_Price INT,
     Yearly_Price INT
@@ -29,8 +29,8 @@ CREATE TABLE Subscription (
 CREATE TABLE Customer_Profile (
     Customer_ID SERIAL PRIMARY KEY,
     Name VARCHAR(32),
-    Email VARCHAR(32),
-    Phone VARCHAR(32),
+    Email UNIQUE VARCHAR(32),
+    Phone UNIQUE VARCHAR(32),
     Created_At TIMESTAMP,
     Updated_At TIMESTAMP
 );

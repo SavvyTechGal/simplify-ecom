@@ -21,7 +21,7 @@ try:
     cursor = connection.cursor()
 
     # Read and execute SQL commands from a .sql file
-    sql_file_path = '/Users/savana/Desktop/Clean Desktop/school/project/3nf_tables.sql'
+    sql_file_path = '/Users/savana/Desktop/Clean Desktop/school/project/insert.sql'
     
     with open(sql_file_path, 'r') as sql_file:
         sql_commands = sql_file.read()
