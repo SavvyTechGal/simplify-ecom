@@ -1,7 +1,7 @@
 CREATE TABLE raw_table (
     Business_ID INT,
     Business_Name VARCHAR(32),
-    Business_URL VARCHAR(32),
+    Business_URL VARCHAR(64),
     Business_Avg_Monthly_Sales DOUBLE PRECISION,
     Business_Avg_Net_Revenue DOUBLE PRECISION,
     Business_Sub_Start_Date TIMESTAMP,
@@ -64,3 +64,6 @@ CREATE TABLE raw_table (
     Product_Created_At TIMESTAMP,
     Product_Updated_At TIMESTAMP
 );
+
+--- load data from csv
+-- COPY raw_table FROM '/Users/savana/Desktop/Clean Desktop/school/project/dummy_data.csv' WITH CSV HEADER;
