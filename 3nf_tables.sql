@@ -2,7 +2,7 @@
 CREATE TABLE Business (
     Business_ID SERIAL PRIMARY KEY,
     Name VARCHAR(32) UNIQUE,
-    URL VARCHAR(32) UNIQUE
+    URL VARCHAR(64) UNIQUE
 );
 
 -- Creating Subscription_Type table
