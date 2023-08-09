@@ -110,7 +110,7 @@ try:
 # Create Raw Table
     create_table_query = """
 CREATE TABLE Business (
-    Business_ID INT PRIMARY KEY,
+    Business_ID SERIAL PRIMARY KEY,
     Name VARCHAR(32),
     URL VARCHAR(32)
 );
@@ -122,7 +122,7 @@ CREATE TABLE Business (
     create_table_query = """
 -- Creating Subscription_Type table
 CREATE TABLE Subscription_Type (
-    Subscription_Type_ID INT PRIMARY KEY,
+    Subscription_Type_ID SERIAL PRIMARY KEY,
     Name VARCHAR(32),
     Order_Max INT,
     Monthly_Price INT,
@@ -136,7 +136,7 @@ CREATE TABLE Subscription_Type (
     create_table_query = """
 -- Creating Subscription table
 CREATE TABLE Subscription (
-    Subscription_ID INT PRIMARY KEY,
+    Subscription_ID SERIAL PRIMARY KEY,
     Business_ID INT,
     Subscription_Type_ID INT,
     Start_Date TIMESTAMP,
@@ -153,7 +153,7 @@ CREATE TABLE Subscription (
     create_table_query = """
 -- Creating Customer_Profile table
 CREATE TABLE Customer_Profile (
-    Customer_ID INT PRIMARY KEY,
+    Customer_ID SERIAL PRIMARY KEY,
     Name VARCHAR(32),
     Email VARCHAR(32),
     Phone VARCHAR(32),
@@ -174,6 +174,23 @@ CREATE TABLE Business_Customers (
     FOREIGN KEY (Business_ID) REFERENCES Business(Business_ID),
     FOREIGN KEY (Customer_ID) REFERENCES Customer_Profile(Customer_ID)
 );
+
+    """ 
+    cursor.execute(create_table_query)
+    print("Table created successfully.")
+
+    create_table_query = """
+-- Creating Address table
+CREATE TABLE Address (
+    Address_ID SERIAL PRIMARY KEY,
+    Country VARCHAR(32),
+    State VARCHAR(16),
+    Zip VARCHAR(16),
+    Line1 VARCHAR(64),
+    Line2 VARCHAR(64),
+    Updated_At TIMESTAMP
+);
+
 
     """ 
     cursor.execute(create_table_query)

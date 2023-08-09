@@ -56,3 +56,20 @@ CREATE TABLE Address (
 );
 
 
+-- Creating Business_Order table
+CREATE TABLE Business_Order (
+    Business_ID INT,
+    Order_ID SERIAL,
+    Customer_ID INT,
+    Shipping_Amount_Paid DOUBLE PRECISION,
+    Shipping_Cost DOUBLE PRECISION,
+    Total_Refund DOUBLE PRECISION,
+    Discount_Code VARCHAR(16),
+    Financial_Status VARCHAR(16),
+    Created_At TIMESTAMP,
+    Fulfilled_At TIMESTAMP,
+    Cancelled_At TIMESTAMP,
+    PRIMARY KEY (Business_ID, Order_ID),
+    FOREIGN KEY (Business_ID) REFERENCES Business(Business_ID),
+    FOREIGN KEY (Business_ID, Customer_ID) REFERENCES Business_Customers(Business_ID, Customer_ID)
+);
