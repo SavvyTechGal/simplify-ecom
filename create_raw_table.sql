@@ -1,4 +1,4 @@
-CREATE TABLE Attribute_Table (
+CREATE TABLE raw_table (
     Business_ID INT,
     Business_Name VARCHAR(32),
     Business_URL VARCHAR(32),
