@@ -1,3 +1,5 @@
+-- All the code in order of creation
+
 CREATE TABLE raw_table (
     Business_Name VARCHAR(32),
     Business_URL VARCHAR(64),
@@ -55,6 +57,8 @@ CREATE TABLE raw_table (
     Product_Sku VARCHAR(16)
 );
 
+
+-- Edit file path for your data file on your computer
 COPY raw_table FROM '/home/david/simplify2/dummy_data.csv' WITH CSV HEADER;
 
 
