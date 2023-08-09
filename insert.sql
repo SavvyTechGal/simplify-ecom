@@ -195,7 +195,7 @@ WHERE
 COMMIT;
 
 -- Insert distinct addresses into the Address table
-INSERT INTO Address (Country, State, Zip, Line1, Line2, Updated_At)
+INSERT INTO Address (Country, State, Zip, Line1, Line2, Created_At)
 SELECT DISTINCT
     rt.Order_Billing_Country AS Country,
     rt.Order_Billing_State AS State,

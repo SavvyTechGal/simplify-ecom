@@ -37,15 +37,6 @@ CREATE TABLE Customer_Profile (
     Updated_At TIMESTAMP
 );
 
--- Creating Business_Customers linker table
-CREATE TABLE Business_Customer(
-    Business_ID INT,
-    Customer_ID INT,
-    PRIMARY KEY (Business_ID, Customer_ID),
-    FOREIGN KEY (Business_ID) REFERENCES Business(Business_ID),
-    FOREIGN KEY (Customer_ID) REFERENCES Customer_Profile(Customer_ID)
-);
-
 
 -- Creating Business_Order table
 CREATE TABLE Business_Order (
@@ -66,18 +57,27 @@ CREATE TABLE Business_Order (
     FOREIGN KEY (Customer_ID) REFERENCES Customer_Profile(Customer_ID)
 );
 
+-- Creating Business_Customers linker table
+CREATE TABLE Business_Customer(
+    Business_ID INT,
+    Customer_ID INT,
+    PRIMARY KEY (Business_ID, Customer_ID),
+    FOREIGN KEY (Business_ID) REFERENCES Business(Business_ID),
+    FOREIGN KEY (Customer_ID) REFERENCES Customer_Profile(Customer_ID)
+);
+
 -- have an updated column for when an order is updated Created_At ,Fulfilled_At ,Cancelled_At
 
 
 -- Creating Address table
 CREATE TABLE Address (
     Address_ID SERIAL PRIMARY KEY,
-    Country VARCHAR(32),
+    Country VARCHAR(3),
     State VARCHAR(16),
     Zip VARCHAR(16),
     Line1 VARCHAR(64),
     Line2 VARCHAR(64),
-    Updated_At TIMESTAMP
+    Created_At TIMESTAMP
 );
 
 
@@ -89,6 +89,7 @@ CREATE TABLE Business_Order_Address (
     Order_ID INT,
     PRIMARY KEY (Address_ID, Type, Business_ID, Order_ID),
     FOREIGN KEY (Address_ID) REFERENCES Address(Address_ID),
+    FOREIGN KEY (Business_ID) REFERENCES Business(Business_ID),
     FOREIGN KEY (Business_ID, Order_ID) REFERENCES Business_Order(Business_ID, Order_ID)
 );
 
