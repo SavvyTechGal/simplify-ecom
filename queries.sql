@@ -1,3 +1,6 @@
+--Savana Hughes & David Abushlaih
+--Team3
+
 --AVG_Business_Order_Value:
 select 
 business_id,  

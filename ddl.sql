@@ -1,3 +1,6 @@
+--Savana Hughes & David Abushlaih
+-- Team3
+
 -- create raw_table
 CREATE TABLE raw_table (
     Business_Name VARCHAR(32),

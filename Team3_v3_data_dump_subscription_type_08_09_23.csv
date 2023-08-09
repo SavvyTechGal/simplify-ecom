@@ -1,0 +1,4 @@
+subscription_type_id,name,order_max,monthly_price,yearly_price
+1,Premium,240,31,372
+2,Standard,122,83,996
+3,Ultra,368,98,1176

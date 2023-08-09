@@ -1,3 +1,7 @@
+--Savana Hughes & David Abushlaih
+-- Team3
+
+
 --BUSINESS
 -- This allows to insert only new businesses not already in the database from the raw_table
 INSERT INTO Business (Name, URL)
