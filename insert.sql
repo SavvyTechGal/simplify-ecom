@@ -6,7 +6,6 @@ FROM raw_table rt
 LEFT JOIN Business b ON rt.Business_Name = b.Name AND rt.Business_URL = b.URL
 WHERE b.Business_ID IS NULL;
 
-
 -- This allows to insert only new subscription types not already in the database from the raw_table
 INSERT INTO Subscription_Type (Name, Order_Max, Monthly_Price, Yearly_Price)
 SELECT DISTINCT rt.Subscription_Name, rt.Subscription_Order_Max, rt.Subscription_Monthly_Price, rt.Subscription_Yearly_Price
@@ -14,8 +13,10 @@ FROM raw_table rt
 LEFT JOIN Subscription_Type st ON rt.Subscription_Name = st.Name
 WHERE st.Subscription_Type_ID IS NULL;
 
-BEGIN;
 
+
+BEGIN;
+-- This allows to update existing subscriptions in the database from the raw_table, it will only update the end date and updated at
 UPDATE Subscription AS s
 SET 
     End_Date = (
@@ -37,6 +38,7 @@ WHERE
             AND s.Subscription_Type_ID = st.Subscription_Type_ID
     );
 
+-- This allows to insert only new subscriptions not already in the database from the raw_table
 INSERT INTO Subscription (Business_ID, Subscription_Type_ID, Start_Date, End_Date, Updated_At)
 SELECT
     b.Business_ID,
@@ -61,7 +63,7 @@ COMMIT;
 
 
 BEGIN;
--- Update existing records
+-- Update existing records in Customer_Profile
 UPDATE Customer_Profile cp
 SET 
     (Name, Email, Phone) = (r.Customer_Name, r.Customer_Email, r.Customer_Phone),
@@ -70,7 +72,7 @@ FROM raw_table r
 WHERE cp.Email = r.Customer_Email;
 
 
--- Insert new records
+-- Insert onlhy new records into Customer_Profile
 INSERT INTO Customer_Profile (Name, Email, Phone, Created_At, Updated_At)
 SELECT DISTINCT
     r.Customer_Name,
