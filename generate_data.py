@@ -1,3 +1,4 @@
+# Created with help of ChatGPT - modified by Savana Hughes
 import csv
 from faker import Faker
 import random
@@ -15,6 +16,7 @@ def random_timestamp():
 def generate_dummy_data(num_records):
     data = []
 
+    # dictionary of subscription values
     subscription_values = {
         'Standard': (random.randint(100, 500), random.randint(20, 100)),
         'Premium': (random.randint(100, 500), random.randint(20, 100)),

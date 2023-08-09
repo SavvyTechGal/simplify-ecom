@@ -1,4 +1,4 @@
-#created by chatgpt
+#created with help of chatgpt -> minor modifications by Savana Hughes
 import psycopg2
 import sys
 
