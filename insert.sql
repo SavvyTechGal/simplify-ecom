@@ -23,7 +23,7 @@ SET
     End_Date = (
         SELECT MAX(rt.Business_Sub_End_Date)
         FROM raw_table rt
-        JOIN Business b ON rt.Business_Name = b.Name
+        JOIN Business b ON rt.Business_Name = b.Name AND rt.Business_URL = b.URL
         JOIN Subscription_Type st ON rt.Subscription_Name = st.Name
         WHERE s.Business_ID = b.Business_ID
             AND s.Subscription_Type_ID = st.Subscription_Type_ID
@@ -33,7 +33,7 @@ WHERE
     EXISTS (
         SELECT 1
         FROM raw_table rt
-        JOIN Business b ON rt.Business_Name = b.Name
+        JOIN Business b ON rt.Business_Name = b.Name AND rt.Business_URL = b.URL
         JOIN Subscription_Type st ON rt.Subscription_Name = st.Name
         WHERE s.Business_ID = b.Business_ID
             AND s.Subscription_Type_ID = st.Subscription_Type_ID
@@ -49,7 +49,7 @@ SELECT
     CURRENT_TIMESTAMP
 FROM
     raw_table rt
-JOIN Business b ON rt.Business_Name = b.Name
+JOIN Business b ON rt.Business_Name = b.Name AND rt.Business_URL = b.URL
 JOIN Subscription_Type st ON rt.Subscription_Name = st.Name
 WHERE NOT EXISTS (
     SELECT 1
@@ -74,7 +74,7 @@ FROM raw_table r
 WHERE cp.Email = r.Customer_Email;
 
 
--- Insert onlhy new records into Customer_Profile
+-- Insert only new records into Customer_Profile
 INSERT INTO Customer_Profile (Name, Email, Phone, Created_At, Updated_At)
 SELECT DISTINCT
     r.Customer_Name,
@@ -103,7 +103,7 @@ SET
     Updated_At = CURRENT_TIMESTAMP
 FROM
     raw_table raw
-JOIN Business b ON raw.Business_Name = b.Name
+JOIN Business b ON raw.Business_Name = b.Name and raw.Business_URL = b.URL
 WHERE
     bp.Business_ID = b.Business_ID
     AND bp.SKU = raw.PRODUCT_SKU;
@@ -121,8 +121,8 @@ SELECT
     CURRENT_TIMESTAMP
 FROM
     raw_table raw
-JOIN Business b ON raw.Business_Name = b.Name
-LEFT JOIN Business_Product bp ON b.Business_ID = bp.Business_ID
+JOIN Business b ON raw.Business_Name = b.Name and raw.Business_URL = b.URL
+LEFT JOIN Business_Product bp ON b.Business_ID = bp.Business_ID AND raw.Product_Sku = bp.Sku
 WHERE bp.Product_ID IS NULL;
 
 COMMIT;
@@ -146,10 +146,33 @@ SELECT
     raw.Order_Cancellation_Date
 FROM
     raw_table raw
-JOIN Business b ON raw.Business_Name = b.Name
-JOIN Customer_Profile cp ON raw.Customer_Email = cp.Email
-LEFT JOIN Business_Order bo ON b.Business_ID = bo.Business_ID
+JOIN Business b ON raw.Business_Name = b.Name AND raw.Business_URL = b.URL
+JOIN Customer_Profile cp ON raw.Customer_Email = cp.Email 
+LEFT JOIN Business_Order bo ON b.Business_ID = bo.Business_ID AND raw.Internal_Order_Number = bo.Order_Number AND cp.Customer_ID = bo.Customer_ID
 WHERE bo.Order_ID IS NULL;
+
+--Insert into Business_Order_lineitem
+INSERT INTO Business_Order_lineitem(Business_ID, Discount_Amount, Quantity, Tax, Order_ID, Product_ID)  
+SELECT
+    DISTINCT 
+    b.Business_ID,
+    rt.Lineitem_Discount_Amount,
+    rt.Lineitem_Quantity,
+    rt.Linetem_Tax,
+    bo.Order_ID,
+    bp.Product_ID
+FROM
+    raw_table rt
+JOIN Business b ON rt.Business_Name = b.Name AND rt.Business_URL = b.URL
+JOIN Business_Order bo ON rt.Internal_Order_Number = bo.Order_Number AND b.Business_ID = bo.Business_ID
+JOIN Business_Product bp ON rt.Product_Sku = bp.Sku AND b.Business_ID = bp.Business_ID
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM Business_Order_lineitem bol
+    WHERE bol.Business_ID = b.Business_ID
+        AND bol.Order_ID = bo.Order_ID
+        AND bol.Product_ID = bp.Product_ID
+);
 
 
 -- business_customer 
@@ -160,7 +183,7 @@ SELECT DISTINCT
     cp.Customer_ID
 FROM
     Business b
-JOIN Business_Order bo ON b.Business_ID = bo.Business_ID
+JOIN Business_Order bo ON b.Business_ID = bo.Business_ID 
 JOIN Customer_Profile cp ON bo.Customer_ID = cp.Customer_ID
 WHERE
     NOT EXISTS (
@@ -209,6 +232,9 @@ WHERE NOT EXISTS (
     AND a.Line2 = rt.Order_Address2
 );
 
+
+
+
 -- Insert data into Business_Order_Address using unified Address IDs
 INSERT INTO Business_Order_Address (Address_ID, Type, Business_ID, Order_ID)
 SELECT
@@ -254,6 +280,7 @@ WHERE NOT EXISTS (
     AND boa.Business_ID = bo.Business_ID
     AND boa.Order_ID = bo.Order_ID
 );
+
 
 
 
