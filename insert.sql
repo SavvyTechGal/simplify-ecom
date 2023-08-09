@@ -131,10 +131,11 @@ COMMIT;
 -- order table 
 BEGIN;
 
-INSERT INTO Business_Order (Business_ID, Customer_ID, Shipping_Amount_Paid, Shipping_Cost, Total_Refund, Discount_Code, Financial_Status, Created_At, Fulfilled_At, Cancelled_At)
+INSERT INTO Business_Order (Business_ID, Customer_ID, Order_Number, Shipping_Amount_Paid, Shipping_Cost, Total_Refund, Discount_Code, Financial_Status, Created_At, Fulfilled_At, Cancelled_At)
 SELECT 
     b.Business_ID,
     cp.Customer_ID,
+    raw.Internal_Order_Number,
     raw.Order_Shipping_Amount_paid,
     raw.Order_Shipping_Cost,
     raw.Order_Total_Refund,
@@ -170,10 +171,89 @@ WHERE
     );
 COMMIT;
 
+-- Insert distinct addresses into the Address table
+INSERT INTO Address (Country, State, Zip, Line1, Line2, Updated_At)
+SELECT DISTINCT
+    rt.Order_Billing_Country AS Country,
+    rt.Order_Billing_State AS State,
+    rt.Order_Billing_Zip AS Zip,
+    rt.Order_Billing_Address1 AS Line1,
+    rt.Order_Billing_Address2 AS Line2,
+    CURRENT_TIMESTAMP
+FROM raw_table rt
+WHERE rt.Order_Billing_Country IS NOT NULL AND NOT EXISTS (
+    SELECT 1
+    FROM Address a
+    WHERE a.Country = rt.Order_Billing_Country
+    AND a.State = rt.Order_Billing_State
+    AND a.Zip = rt.Order_Billing_Zip
+    AND a.Line1 = rt.Order_Billing_Address1
+    AND a.Line2 = rt.Order_Billing_Address2
+)
+UNION
+SELECT DISTINCT
+    rt.Order_Country AS Country,
+    rt.Order_State AS State,
+    rt.Order_Zip AS Zip,
+    rt.Order_Address1 AS Line1,
+    rt.Order_Address2 AS Line2,
+    CURRENT_TIMESTAMP
+FROM raw_table rt
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM Address a
+    WHERE a.Country = rt.Order_Country
+    AND a.State = rt.Order_State
+    AND a.Zip = rt.Order_Zip
+    AND a.Line1 = rt.Order_Address1
+    AND a.Line2 = rt.Order_Address2
+);
 
-
-
-
+-- Insert data into Business_Order_Address using unified Address IDs
+INSERT INTO Business_Order_Address (Address_ID, Type, Business_ID, Order_ID)
+SELECT
+    a.Address_ID,
+    'Billing' AS Type,
+    bo.Business_ID,
+    bo.Order_ID
+FROM raw_table rt
+JOIN Address a ON
+    a.Country = rt.Order_Billing_Country AND
+    a.State = rt.Order_Billing_State AND
+    a.Zip = rt.Order_Billing_Zip AND
+    a.Line1 = rt.Order_Billing_Address1 AND
+    a.Line2 = rt.Order_Billing_Address2
+JOIN Business_Order bo ON rt.Internal_Order_Number = bo.Order_Number
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM Business_Order_Address boa
+    WHERE boa.Address_ID = a.Address_ID
+    AND boa.Type = 'Billing'
+    AND boa.Business_ID = bo.Business_ID
+    AND boa.Order_ID = bo.Order_ID
+)
+UNION
+SELECT
+    a.Address_ID,
+    'Shipping' AS Type,
+    bo.Business_ID,
+    bo.Order_ID
+FROM raw_table rt
+JOIN Address a ON
+    a.Country = rt.Order_Country AND
+    a.State = rt.Order_State AND
+    a.Zip = rt.Order_Zip AND
+    a.Line1 = rt.Order_Address1 AND
+    a.Line2 = rt.Order_Address2
+JOIN Business_Order bo ON rt.Internal_Order_Number = bo.Order_Number
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM Business_Order_Address boa
+    WHERE boa.Address_ID = a.Address_ID
+    AND boa.Type = 'Shipping'
+    AND boa.Business_ID = bo.Business_ID
+    AND boa.Order_ID = bo.Order_ID
+);
 
 
 

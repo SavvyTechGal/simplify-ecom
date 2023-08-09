@@ -52,6 +52,7 @@ CREATE TABLE Business_Order (
     Business_ID INT,
     Order_ID SERIAL,
     Customer_ID INT,
+    Order_Number VARCHAR(16),
     Shipping_Amount_Paid DOUBLE PRECISION,
     Shipping_Cost DOUBLE PRECISION,
     Total_Refund DOUBLE PRECISION,

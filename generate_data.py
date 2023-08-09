@@ -33,7 +33,7 @@ def generate_dummy_data(num_records):
         subscription_name = random.choice(['Standard', 'Premium', 'Ultra'])
         subscription_order_max, subscription_monthly_price = subscription_values[subscription_name]
         subscription_yearly_price = subscription_monthly_price * 12
-        # order_id = fake.random_int(min=100, max=999)
+        Internal_Order_Number = fake.random_int(min=10000, max=999999)
         order_total = random.uniform(10, 200)
         order_subtotal = order_total - random.uniform(0, 10)
         order_tax = random.uniform(0, 30)
@@ -90,7 +90,7 @@ def generate_dummy_data(num_records):
             business_name, business_url, business_avg_monthly_sales,
             business_avg_net_revenue, business_sub_start_date, business_sub_end_date,
             subscription_name, subscription_order_max,
-            subscription_monthly_price, subscription_yearly_price,
+            subscription_monthly_price, subscription_yearly_price, Internal_Order_Number,
             order_total, order_subtotal, order_tax,
             order_shipping_amount_paid, order_shipping_cost, order_product_cost,
             order_total_refund, order_creation_date, order_fulfilled_date,
@@ -124,7 +124,7 @@ with open(csv_filename, mode='w', newline='', encoding='utf-8') as csv_file:
         "Business_Name", "Business_URL", "Business_Avg_Monthly_Sales",
         "Business_Avg_Net_Revenue", "Business_Sub_Start_Date", "Business_Sub_End_Date",
         "Subscription_Name", "Subscription_Order_Max",
-        "Subscription_Monthly_Price", "Subscription_Yearly_Price",
+        "Subscription_Monthly_Price", "Subscription_Yearly_Price", "Internal_Order_Number",
         "Order_Total", "Order_Subtotal", "Order_Tax", "Order_Shipping_Amount_Paid",
         "Order_Shipping_Cost", "Order_Product_Cost", "Order_Total_Refund",
         "Order_Creation_Date", "Order_Fulfilled_Date", "Order_Cancellation_Date",

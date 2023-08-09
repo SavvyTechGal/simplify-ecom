@@ -9,6 +9,7 @@ CREATE TABLE raw_table (
     Subscription_Order_Max INT,
     Subscription_Monthly_Price INT,
     Subscription_Yearly_Price INT,
+    Internal_Order_Number VARCHAR(16),
     Order_Total DOUBLE PRECISION,
     Order_Subtotal DOUBLE PRECISION,
     Order_Tax DOUBLE PRECISION,
