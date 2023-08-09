@@ -142,7 +142,23 @@ JOIN Customer_Profile cp ON raw.Customer_Email = cp.Email;
 
 
 
-
+INSERT INTO Business_Order (Business_ID, Customer_ID, Shipping_Amount_Paid, Shipping_Cost, Total_Refund, Discount_Code, Financial_Status, Created_At, Fulfilled_At, Cancelled_At)
+SELECT 
+    b.Business_ID,
+    raw.Customer_ID,
+    raw.Order_Shipping_Amount_paid,
+    raw.Order_Shipping_Cost,
+    raw.Order_Total_Refund,
+    raw.Order_Discount_Code,
+    raw.Order_Financial_Status,
+    raw.Order_Creation_Date,
+    raw.Order_Fulfilled_Date,
+    raw.Order_Cancellation_Date
+FROM
+    raw_table raw
+JOIN Business b ON raw.Business_Name = b.Name
+LEFT JOIN Business_Order bo ON b.Business_ID = bo.Business_ID AND raw.Order_ID = bo.Order_ID
+WHERE bo.Order_ID IS NULL;
 
 
 
