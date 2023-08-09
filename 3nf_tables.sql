@@ -62,7 +62,7 @@ CREATE TABLE Business_Order (
     Cancelled_At TIMESTAMP,
     PRIMARY KEY (Business_ID, Order_ID),
     FOREIGN KEY (Business_ID) REFERENCES Business(Business_ID),
-    FOREIGN KEY (Business_ID, Customer_ID) REFERENCES Business_Customer(Business_ID, Customer_ID)
+    FOREIGN KEY (Customer_ID) REFERENCES Customer_Profile(Customer_ID)
 );
 
 -- have an updated column for when an order is updated Created_At ,Fulfilled_At ,Cancelled_At
