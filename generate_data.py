@@ -15,6 +15,12 @@ def random_timestamp():
 def generate_dummy_data(num_records):
     data = []
 
+    subscription_values = {
+        'Standard': (random.randint(100, 500), random.randint(20, 100)),
+        'Premium': (random.randint(100, 500), random.randint(20, 100)),
+        'Ultra': (random.randint(100, 500), random.randint(20, 100))
+    }
+
     for _ in range(num_records):
         business_id = fake.random_int(min=10000, max=99999)
         business_name = fake.company()
@@ -25,8 +31,7 @@ def generate_dummy_data(num_records):
         business_sub_end_date = business_sub_start_date + timedelta(days=random.randint(30, 365))
         subscription_id = fake.random_int(min=100000, max=999999)
         subscription_name = random.choice(['Standard', 'Premium', 'Ultra'])
-        subscription_order_max = random.randint(100, 500)
-        subscription_monthly_price = random.randint(20, 100)
+        subscription_order_max, subscription_monthly_price = subscription_values[subscription_name]
         subscription_yearly_price = subscription_monthly_price * 12
         order_id = fake.random_int(min=100, max=999)
         order_total = random.uniform(10, 200)
