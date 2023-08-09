@@ -127,7 +127,7 @@ WHERE bp.Product_ID IS NULL;
 
 COMMIT;
 
-
+-- business_customer
 INSERT INTO Business_Customer (Business_ID, Customer_ID)
 SELECT
     b.Business_ID,
