@@ -38,8 +38,54 @@ WHERE NOT EXISTS (
 
 
 
-INSERT INTO Address (Country, State, Zip, Line1, Line2, Updated_At)
-SELECT DISTINCT 
+
+
+
+
+
+
+
+INSERT INTO Business_Product (Business_ID, Title, Sku, Amount, Cost, Description)
+SELECT 
+    b.Business_ID,
+    raw.Product_Title,
+    raw.Product_Sku,
+    raw.Product_Amount,
+    raw.Product_Cost,
+    raw.Product_Description
+FROM
+    raw_table raw
+Left JOIN Business b ON raw.Business_Name = b.Name;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

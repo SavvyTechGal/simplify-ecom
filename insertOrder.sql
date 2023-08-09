@@ -118,7 +118,32 @@ WHERE NOT EXISTS (
 );
 
 
+CREATE TABLE Business_Product (
+    Business_ID INT,
+    Product_ID SERIAL,
+    Title VARCHAR(32),
+    Sku VARCHAR(16),
+    Amount DOUBLE PRECISION,
+    Cost DOUBLE PRECISION,
+    Description VARCHAR(256),
+    Created_At TIMESTAMP,
+    Updated_At TIMESTAMP,
+    PRIMARY KEY (Business_ID, Product_ID),
+    FOREIGN KEY (Business_ID) REFERENCES Business(Business_ID)
+);
 
+
+INSERT INTO Business_Product (Business_ID, Title, Sku, Amount, Cost, Description)
+SELECT 
+    b.Business_ID,
+    raw.Product_Title,
+    raw.Product_Sku,
+    raw.Product_Amount,
+    raw.Product_Cost,
+    raw.Product_Description
+FROM
+    raw_table raw
+Left JOIN Business b ON raw.Business_Name = b.Name;
 
 
 
