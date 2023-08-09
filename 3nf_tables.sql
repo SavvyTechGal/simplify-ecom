@@ -31,8 +31,8 @@ CREATE TABLE Subscription (
 CREATE TABLE Customer_Profile (
     Customer_ID SERIAL PRIMARY KEY,
     Name VARCHAR(32),
-    Email UNIQUE VARCHAR(32),
-    Phone UNIQUE VARCHAR(32),
+    Email VARCHAR(32) UNIQUE,
+    Phone VARCHAR(32) UNIQUE,
     Created_At TIMESTAMP,
     Updated_At TIMESTAMP
 );
@@ -99,8 +99,7 @@ CREATE TABLE Business_Product (
     Created_At TIMESTAMP,
     Updated_At TIMESTAMP,
     PRIMARY KEY (Business_ID, Product_ID),
-    FOREIGN KEY (Business_ID) REFERENCES Business(Business_ID),
-    FOREIGN KEY (Product_ID) REFERENCES Product(Product_ID)
+    FOREIGN KEY (Business_ID) REFERENCES Business(Business_ID)
 );
 
 -- Creating Business_Order_lineitem table
@@ -115,5 +114,5 @@ CREATE TABLE Business_Order_lineitem (
     PRIMARY KEY (Business_ID, Lineitem_ID),
     FOREIGN KEY (Business_ID) REFERENCES Business(Business_ID),
     FOREIGN KEY (Business_ID, Order_ID) REFERENCES Business_Order(Business_ID, Order_ID),
-    FOREIGN KEY (Business_ID, Product_ID) REFERENCES Product(Business_ID, Product_ID)
+    FOREIGN KEY (Business_ID, Product_ID) REFERENCES Business_Product(Business_ID, Product_ID)
 );

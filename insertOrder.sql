@@ -82,7 +82,6 @@ LEFT JOIN Subscription_Type st ON rt.Subscription_Name = st.Name
 WHERE st.Subscription_Type_ID IS NULL;
 
 
-
 CREATE TABLE Subscription (
     Subscription_ID SERIAL PRIMARY KEY,
     Business_ID INT,

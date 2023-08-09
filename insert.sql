@@ -33,12 +33,3 @@ WHERE NOT EXISTS (
 
 
 
--- INSERT INTO Address (Country, State, Zip, Line1, Line2, Updated_At)
--- SELECT DISTINCT rt.Country, rt.State, rt.Zip, rt.Line1, rt.Line2, rt.Updated_At
--- FROM raw_table rt
--- LEFT JOIN Address a ON rt.Country = a.Country
---                     AND rt.State = a.State
---                     AND rt.Zip = a.Zip
---                     AND rt.Line1 = a.Line1
---                     AND rt.Line2 = a.Line2
--- WHERE a.Address_ID IS NULL;
