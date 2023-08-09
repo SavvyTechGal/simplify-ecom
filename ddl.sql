@@ -113,6 +113,7 @@ CREATE TABLE Business_Product (
 CREATE TABLE Business_Order_lineitem (
     Business_ID INT,
     Lineitem_ID SERIAL,
+    Gross_Revenue DOUBLE PRECISION,
     Discount_Amount DOUBLE PRECISION,
     Quantity INT,
     Tax DOUBLE PRECISION,
