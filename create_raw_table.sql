@@ -56,6 +56,8 @@ CREATE TABLE raw_table (
     Product_Sku VARCHAR(16)
 );
 
+-- - load data from csv
+COPY raw_table FROM '/Users/savana/Desktop/Clean Desktop/school/project/dummy_data.csv' WITH CSV HEADER;
 --- load data from csv
 -- COPY raw_table FROM '/Users/savana/Desktop/Clean Desktop/school/project/dummy_data.csv' WITH CSV HEADER;
 -- COPY raw_table FROM '/home/david/simplify2/dummy_data.csv' WITH CSV HEADER;

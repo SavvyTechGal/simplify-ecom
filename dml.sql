@@ -152,10 +152,11 @@ LEFT JOIN Business_Order bo ON b.Business_ID = bo.Business_ID AND raw.Internal_O
 WHERE bo.Order_ID IS NULL;
 
 --Insert into Business_Order_lineitem
-INSERT INTO Business_Order_lineitem(Business_ID, Discount_Amount, Quantity, Tax, Order_ID, Product_ID)  
+INSERT INTO Business_Order_lineitem(Business_ID, Gross_Revenue, Discount_Amount, Quantity, Tax, Order_ID, Product_ID)  
 SELECT
     DISTINCT 
     b.Business_ID,
+    rt.Lineitem_Gross_Revenue,
     rt.Lineitem_Discount_Amount,
     rt.Lineitem_Quantity,
     rt.Linetem_Tax,
