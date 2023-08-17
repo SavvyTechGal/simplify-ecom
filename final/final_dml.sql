@@ -37,6 +37,7 @@ WHERE NOT EXISTS (
 
 INSERT INTO Transaction (dt_of_tran, hr_of_trans, customer_id)
 SELECT
+    DISTINCT 
     dt_of_tran,
     hr_of_trans,
     c.customer_id
@@ -49,7 +50,7 @@ WHERE NOT EXISTS (
 );
 
 INSERT INTO Transaction_Products (transaction_id, product_id, qty_purchased)
-SELECT
+SELECT DISTINCT
     t.transaction_id,
     p.product_id,
     r.qty_purchased
@@ -62,6 +63,7 @@ WHERE NOT EXISTS (
     FROM Transaction_Products tp
     WHERE tp.transaction_id = t.transaction_id AND tp.product_id = p.product_id
 );
+
 
 
 
