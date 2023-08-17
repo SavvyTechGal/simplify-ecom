@@ -4,7 +4,7 @@ import sys
 
 # Replace these variables with your PostgreSQL credentials
 db_host = "127.0.0.1"
-db_name = "simplify_db"
+db_name = "final"
 db_user = "postgres"
 db_password = "postgres"
 
@@ -21,7 +21,7 @@ try:
     cursor = connection.cursor()
 
     # Read and execute SQL commands from a .sql file
-    sql_file_path = '/Users/savana/Desktop/Clean Desktop/school/project/dml.sql'
+    sql_file_path = '/Users/savana/Desktop/Clean Desktop/school/project/final/final_dml.sql'
     
     with open(sql_file_path, 'r') as sql_file:
         sql_commands = sql_file.read()
@@ -36,3 +36,7 @@ try:
 
 except Exception as e:
     print("An error occurred:", str(e))
+
+
+
+

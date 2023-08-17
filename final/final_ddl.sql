@@ -15,23 +15,8 @@ CREATE TABLE raw_table (
     prod_size VARCHAR(32)
 );
 
-CREATE TABLE Transaction (
-    transaction_ID SERIAL PRIMARY KEY,
-    dt_of_tran INT,
-    hr_of_trans INT,
-    customer_id INT,
-    FOREIGN KEY (customer_id) REFERENCES Customer(customer_id)
-);
-
-
-CREATE TABLE Transaction_Products (
-    transaction_id INT,
-    product_id INT,
-    qty_purchased INT,
-    PRIMARY KEY (transaction_id, product_id),
-    FOREIGN KEY (transaction_id) REFERENCES Transaction(transaction_ID),
-    FOREIGN KEY (product_id) REFERENCES Product(product_id)
-);
+COPY raw_table FROM '/Users/savana/Desktop/Clean Desktop/school/project/final/raw.csv' WITH CSV HEADER;
+Copy raw_table FROM '/home/david/simplify2/final/raw.csv' WITH CSV HEADER;
 
 CREATE TABLE Customer (
     customer_id SERIAL PRIMARY KEY,
@@ -57,4 +42,28 @@ CREATE TABLE Product_Class (
     PRIMARY KEY (product_id, class_type),
     FOREIGN KEY (product_id) REFERENCES Product(product_id)
 );
+
+CREATE TABLE Transaction (
+    transaction_ID SERIAL PRIMARY KEY,
+    dt_of_tran INT,
+    hr_of_trans INT,
+    customer_id INT,
+    FOREIGN KEY (customer_id) REFERENCES Customer(customer_id)
+);
+
+
+CREATE TABLE Transaction_Products (
+    transaction_id INT,
+    product_id INT,
+    qty_purchased INT,
+    PRIMARY KEY (transaction_id, product_id),
+    FOREIGN KEY (transaction_id) REFERENCES Transaction(transaction_ID),
+    FOREIGN KEY (product_id) REFERENCES Product(product_id)
+);
+
+
+
+
+
+
 
