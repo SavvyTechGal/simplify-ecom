@@ -16,6 +16,7 @@ CREATE TABLE raw_table (
 );
 
 COPY raw_table FROM '/Users/savana/Desktop/Clean Desktop/school/project/final/raw.csv' WITH CSV HEADER;
+Copy raw_table FROM '/home/david/simplify2/final/raw.csv' WITH CSV HEADER;
 
 CREATE TABLE Customer (
     customer_id SERIAL PRIMARY KEY,
