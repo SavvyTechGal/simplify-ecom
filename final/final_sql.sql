@@ -63,12 +63,3 @@ WHERE t1.customer_id < t2.customer_id
 GROUP BY t1.customer_id, t2.customer_id, t1.dt_of_tran, pc.class_type
 HAVING COUNT(*) >= 2
 ORDER BY t1.dt_of_tran, pc.class_type, customer1, customer2;
-
-COPY RAW_TABLE TO '/Users/savana/Desktop/Clean Desktop/school/project/final/raw_table.csv' WITH CSV HEADER;
-COPY Customer TO '/Users/savana/Desktop/Clean Desktop/school/project/final/customer.csv' WITH CSV HEADER;
-COPY Product TO '/Users/savana/Desktop/Clean Desktop/school/project/final/product.csv' WITH CSV HEADER;
-COPY Product_Class TO '/Users/savana/Desktop/Clean Desktop/school/project/final/product_class.csv' WITH CSV HEADER;
-COPY Transaction TO '/Users/savana/Desktop/Clean Desktop/school/project/final/transaction.csv' WITH CSV HEADER;
-COPY Transaction_Products TO '/Users/savana/Desktop/Clean Desktop/school/project/final/transaction_products.csv' WITH CSV HEADER;
-
-
