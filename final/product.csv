@@ -1,0 +1,42 @@
+product_id,prod_name,prod_unit_price,prod_weight,prod_weight_unit,manufacturer,supplier
+1,Cereal,3.45,48,oz,General mills,GMPVT
+2,Cereal,4.99,20,oz,Kellogg's,KelloggPVT
+3,Paper Towels,6.99,6,rolls,TP Company,TPCompanyPVT
+4,Shampoo,6.99,32,oz,Head & Shoulders,SS1
+5,Chocolate,1.25,12,oz,Milkyway,PVT
+6,CA OJ,3.99,5,lbs,abc farms,Cross Country rabbit
+7,Soup can,1.19,32,oz,Campbell,CampbellPVT
+8,Bananas,0.49,2,lb,Local Market,LMFruits
+9,Tuna can,2.89,5,oz,Starkist,StarkistPVT
+10,Hand Soap,1.99,8,oz,SudzCo,SudzCoPVT
+11,Canola Oil,7.99,64,oz,Wesson,wPVT
+12,Salt,2.25,100,grams,McKormick,mPVT
+13,Hand Sanitizer,2.99,12,oz,CleanHands,CleanHandsPVT
+14,Deodorant,3.95,3,oz,Old Spice,SS1
+15,Bread,2.99,16,oz,Wonder,WonderPVT
+16,Toothpaste,2.95,4,oz,Crest,SS1
+17,Lotion,7.29,10,oz,SilkSkin,SilkSkinPVT
+18,Dish Soap,1.49,16,oz,CleanHands,CleanHandsPVT
+19,Toilet Paper,9.99,9,rolls,TP Company,TPCompanyPVT
+20,Cooking Oil,7.99,64,oz,Wesson,wPVT
+21,Milkyway,1.25,12,oz,Milkyway,PVT
+22,Orange Juice,3.99,5,lbs,abc farms,Cross Country rabbit
+23,Bananas,0.59,2,lb,Local Market,LMFruits
+24,Soap,1.99,6,oz,Dove,SS1
+25,Trash Bags,7.49,30,count,TrashTech,TTCompanyPVT
+26,Conditioner,5.99,20,oz,Herbal Essences,SS1
+27,Toothbrush,2.99,1,"",Colgate,SS1
+28,Apples,0.89,2,lb,Local Market,LMFruits
+29,Toothpaste,1.99,6,oz,Colgate,SS1
+30,Coffee,9.99,12,oz,Starbucks,StarbucksPVT
+31,Toothpaste,3.29,5,oz,Crest,SS1
+32,Cherrios,3.45,48,oz,General mills,GMPVT
+33,Shampoo,5.35,32,oz,XYZ,SS1
+34,Toilet Paper,10.99,12,rolls,TP Company,TPCompanyPVT
+35,Bic Razor,2.99,12,"",Bic,SS1
+36,Cheese,3.89,8,oz,Kraft,KraftPVT
+37,Candy,1.25,2,oz,Mars,PVT
+38,Shampoo,6.79,25,oz,Pantene,SS1
+39,Mouthwash,4.75,16,oz,Listerine,SS1
+40,Black pepper,2.25,100,grams,McKormick,mPVT
+41,Toothbrush,2.49,1,count,Oral-B,SS1

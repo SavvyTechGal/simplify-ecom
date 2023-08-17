@@ -1,0 +1,61 @@
+dt_of_tran,hr_of_trans,customer,c_age,c_gender,c_cell,prod_name,generic_or_brand,manufacturer,supplier,prod_class,prod_unit_price,qty_purchased,prod_size
+1,18,Jack Smith,40+,Male,2367846,Shampoo,brand,XYZ,SS1,personal-hygiene,5.35,1,32 oz
+1,11,Rita,30+,Female,78978864,Cherrios,brand,General mills,GMPVT,edible-breakfast,3.45,1,48 oz
+1,14,Stuart Sam,50+,Male,3456728,Bic Razor,brand,Bic,SS1,personal-hygiene,2.99,1,12
+1,17,Willard james,20+,Male,90830456,Milkyway,brand,Milkyway,PVT,snacks,1.25,1,12 oz
+1,18,Jack Smith,40+,Male,2367846,CA OJ,generic,abc farms,Cross Country rabbit,fruits-agri,3.99,1,5 lbs
+2,18,jerome Chao,30+,Male,2367846,Soup can,brand,Campbell,CampbellPVT,edible-canned-product,1.19,1,32 oz
+2,18,jerome Chao,30+,Male,2367846,Canola Oil,brand,Wesson,wPVT,edible-oil,7.99,1,64 oz
+2,14,jerome Chao,30+,Male,2367846,Black pepper,brand,McKormick,mPVT,dry-spice-condiment,2.25,1,100 grams
+2,17,Willard james,20+,Male,90830456,Milkyway,brand,Milkyway,PVT,snacks,1.25,1,12 oz
+3,12,Lisa Johnson,20+,Female,98765432,Toothpaste,brand,Colgate,SS1,personal-hygiene,1.99,1,6 oz
+3,15,Lisa Johnson,20+,Female,98765432,Tuna can,brand,Starkist,StarkistPVT,edible-canned-product,2.89,2,5 oz
+3,19,Lisa Johnson,20+,Female,98765432,Toilet Paper,generic,TP Company,TPCompanyPVT,household-supplies,10.99,1,12 rolls
+4,9,John Doe,50+,Male,543210,Toothbrush,brand,Oral-B,SS1,personal-hygiene,2.49,1,1 count
+4,12,John Doe,50+,Male,543210,Bread,brand,Wonder,WonderPVT,edible-bakery,2.99,1,16 oz
+4,16,John Doe,50+,Male,543210,Toothpaste,brand,Crest,SS1,personal-hygiene,3.29,1,5 oz
+5,10,Susan Williams,30+,Female,2345678,Shampoo,brand,Pantene,SS1,personal-hygiene,6.79,1,25 oz
+5,14,Susan Williams,30+,Female,2345678,Cereal,brand,Kellogg's,KelloggPVT,edible-breakfast,4.99,1,20 oz
+5,16,Susan Williams,30+,Female,2345678,Hand Soap,generic,SudzCo,SudzCoPVT,household-supplies,1.99,2,8 oz
+6,11,Michael Brown,40+,Male,8765432,Deodorant,brand,Old Spice,SS1,personal-hygiene,3.95,1,3 oz
+6,15,Michael Brown,40+,Male,8765432,Bananas,generic,Local Market,LMFruits,groceries,0.49,6,2 lb
+6,18,Michael Brown,40+,Male,8765432,Toilet Paper,generic,TP Company,TPCompanyPVT,household-supplies,9.99,1,9 rolls
+7,12,Emily Martinez,20+,Female,7654321,Mouthwash,brand,Listerine,SS1,personal-hygiene,4.75,1,16 oz
+7,14,Emily Martinez,20+,Female,7654321,Coffee,brand,Starbucks,StarbucksPVT,edible-beverage,9.99,1,12 oz
+7,19,Emily Martinez,20+,Female,7654321,Trash Bags,generic,TrashTech,TTCompanyPVT,household-supplies,7.49,1,30 count
+8,10,David Miller,30+,Male,6543219,Conditioner,brand,Herbal Essences,SS1,personal-hygiene,5.99,1,20 oz
+8,15,David Miller,30+,Male,6543219,Cheese,brand,Kraft,KraftPVT,edible-dairy,3.89,1,8 oz
+8,18,David Miller,30+,Male,6543219,Hand Sanitizer,generic,CleanHands,CleanHandsPVT,household-supplies,2.99,3,12 oz
+9,12,Elizabeth Davis,40+,Female,5432198,Lotion,generic,SilkSkin,SilkSkinPVT,personal-care,7.29,1,10 oz
+9,16,Elizabeth Davis,40+,Female,5432198,Apples,generic,Local Market,LMFruits,groceries,0.89,8,2 lb
+9,19,Elizabeth Davis,40+,Female,5432198,Paper Towels,generic,TP Company,TPCompanyPVT,household-supplies,6.99,2,6 rolls
+10,9,William Johnson,50+,Male,4321987,Toothpaste,brand,Crest,SS1,personal-hygiene,2.95,1,4 oz
+10,12,William Johnson,50+,Male,4321987,Bananas,generic,Local Market,LMFruits,groceries,0.59,4,2 lb
+10,15,William Johnson,50+,Male,4321987,Dish Soap,generic,CleanHands,CleanHandsPVT,household-supplies,1.49,1,16 oz
+1,18,Jack Smith,40+,Male,2367846,Shampoo,brand,XYZ,SS1,personal-hygiene,5.35,1,32 oz
+1,11,Rita,30+,Female,78978864,Cherrios,brand,General mills,GMPVT,edible-breakfast,3.45,1,48 oz
+1,14,Stuart Sam,50+,Male,3456728,Bic Razor,brand,Bic,SS1,personal-hygiene,2.99,1,12
+1,17,Willard james,20+,Male,90830456,Milkyway,brand,Milkyway,PVT,snacks,1.25,1,12 oz
+1,18,Jack Smith,40+,Male,2367846,CA OJ,generic,abc farms,Cross Country rabbit,fruits-agri,3.99,1,5 lbs
+2,18,jerome Chao,30+,Male,2367846,Soup can,brand,Campbell,CampbellPVT,edible-canned-product,1.19,1,32 oz
+2,18,jerome Chao,30+,Male,2367846,Canola Oil,brand,Wesson,wPVT,edible-oil,7.99,1,64 oz
+2,14,jerome Chao,30+,Male,2367846,Black pepper,brand,McKormick,mPVT,dry-spice-condiment,2.25,1,100 grams
+2,17,Willard james,20+,Male,90830456,Milkyway,brand,Milkyway,PVT,snacks,1.25,1,12 oz
+3,18,Jennifer Smith,40+,Female,2367846,Shampoo,brand,XYZ,SS1,personal-hygiene,5.35,1,32 oz
+3,11,John,30+,Male,78978864,Cereal,brand,General mills,GMPVT,edible-breakfast,3.45,1,48 oz
+3,14,Stuart Sam,50+,Male,3456728,Bic Razor,brand,Bic,SS1,personal-hygiene,2.99,1,12
+3,17,Willard james,20+,Male,90830456,Milkyway,brand,Milkyway,PVT,snacks,1.25,1,12 oz
+3,18,Jennifer Smith,40+,Female,2367846,Orange Juice,generic,abc farms,Cross Country rabbit,fruits-agri,3.99,1,5 lbs
+4,18,Emily Johnson,30+,Female,2367846,Soup can,brand,Campbell,CampbellPVT,edible-canned-product,1.19,1,32 oz
+4,18,Emily Johnson,30+,Female,2367846,Cooking Oil,brand,Wesson,wPVT,edible-oil,7.99,1,64 oz
+4,14,David Smith,30+,Male,2367846,Salt,brand,McKormick,mPVT,dry-spice-condiment,2.25,1,100 grams
+4,17,David Smith,30+,Male,90830456,Chocolate,brand,Milkyway,PVT,snacks,1.25,1,12 oz
+5,18,Linda Williams,40+,Female,2367846,Shampoo,brand,XYZ,SS1,personal-hygiene,5.35,1,32 oz
+5,11,Linda Williams,40+,Female,78978864,Cherrios,brand,General mills,GMPVT,edible-breakfast,3.45,1,48 oz
+5,14,John Johnson,30+,Male,3456728,Toothbrush,brand,Colgate,SS1,personal-hygiene,2.99,1,1
+5,17,John Johnson,30+,Male,90830456,Candy,brand,Mars,PVT,snacks,1.25,1,2 oz
+6,18,Jane Doe,30+,Female,2367846,Soap,brand,Dove,SS1,personal-hygiene,1.99,1,6 oz
+6,11,Emily Johnson,30+,Female,78978864,Cereal,brand,General mills,GMPVT,edible-breakfast,3.45,1,48 oz
+6,14,Stuart Sam,50+,Male,3456728,Bic Razor,brand,Bic,SS1,personal-hygiene,2.99,1,12
+6,17,Willard james,20+,Male,90830456,Milkyway,brand,Milkyway,PVT,snacks,1.25,1,12 oz
+7,18,Michael Brown,40+,Male,2367846,Shampoo,brand,Head & Shoulders,SS1,personal-hygiene,6.99,1,32 oz
