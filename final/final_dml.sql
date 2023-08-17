@@ -1,12 +1,8 @@
 
-
-
 INSERT INTO Product (prod_name, prod_unit_price, prod_weight, prod_weight_unit, manufacturer, supplier)
 SELECT DISTINCT prod_name, prod_unit_price, prod_weight, prod_size, manufacturer, supplier
 FROM raw_table
 ON CONFLICT (prod_name, prod_unit_price, prod_weight, prod_weight_unit, manufacturer, supplier) DO NOTHING;
-
-
 
 INSERT INTO Transaction_Products (transaction_id, product_id, qty_purchased)
 SELECT t.transaction_ID, p.product_id, r.qty_purchased
