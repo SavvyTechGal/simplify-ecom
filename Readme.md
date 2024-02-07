@@ -16,11 +16,11 @@ Our queries for finding the subsequent results are found in queries.sql
 
 Using our 3NF tables we queried different business metrics:
 
---AVG_Business_Order_Value:__
-SQL query:__
+--AVG_Business_Order_Value:<br />
+SQL query: <br />
 ![Screenshot from 2024-02-07 00-02-04](https://github.com/SavvyTechGal/simplify-ecom/assets/83670808/5d9fee2b-be56-42c9-9b2e-c738a35d7162)
 
-Results from Query:__
+Results from Query:<br />
 ![Screenshot from 2024-02-07 00-03-34](https://github.com/SavvyTechGal/simplify-ecom/assets/83670808/439c58d5-444c-4b78-a036-e2469bdb80ba)
 
 
