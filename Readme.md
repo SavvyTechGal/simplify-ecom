@@ -25,31 +25,31 @@ Results from Query:<br />
 
 
 
---Total Business Revenue__
-SQL Query:
+--Total Business Revenue<br />
+SQL Query:<br />
 ![Screenshot from 2024-02-07 00-08-59](https://github.com/SavvyTechGal/simplify-ecom/assets/83670808/172c8854-e1c4-46d0-b861-5baf1f169ad2)
 
-Results from Query:
+Results from Query:<br />
 ![Screenshot from 2024-02-07 00-09-28](https://github.com/SavvyTechGal/simplify-ecom/assets/83670808/2111a304-b28c-4b90-ab65-48644990ffec)
 
 
 
---AVG Monthly Revenue
-SQL Query:
+--AVG Monthly Revenue<br />
+SQL Query:<br />
 ![Screenshot from 2024-02-07 00-19-35](https://github.com/SavvyTechGal/simplify-ecom/assets/83670808/ab5002e9-9665-40f2-a53d-6c610d9d26b9)
 
-Results from Query:
+Results from Query:<br />
 ![Screenshot from 2024-02-07 00-20-06](https://github.com/SavvyTechGal/simplify-ecom/assets/83670808/28a79068-4ac1-4e81-a30e-820b598c11ea)
 
 
 
---Revenue By Year
-SQL Query:
+--Revenue By Year<br />
+SQL Query:<br />
 ![Screenshot from 2024-02-07 00-16-44](https://github.com/SavvyTechGal/simplify-ecom/assets/83670808/58e84735-7360-4d94-9df1-f26ea9e8a6f0)
 
-Results from Query:
+Results from Query:<br />
 ![Screenshot from 2024-02-07 00-18-17](https://github.com/SavvyTechGal/simplify-ecom/assets/83670808/2baf0d93-c28c-4e61-aefd-76ed6c405a76)
-
+<br />
 
 # How to Run 
 ## Install:
