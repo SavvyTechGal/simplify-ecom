@@ -19,34 +19,34 @@ Using our 3NF tables we queried different business metrics:
 --AVG_Business_Order_Value:<br />
 SQL query: <br />
 ![Screenshot from 2024-02-07 00-02-04](https://github.com/SavvyTechGal/simplify-ecom/assets/83670808/5d9fee2b-be56-42c9-9b2e-c738a35d7162)
-
+<br />
 Results from Query:<br />
 ![Screenshot from 2024-02-07 00-03-34](https://github.com/SavvyTechGal/simplify-ecom/assets/83670808/439c58d5-444c-4b78-a036-e2469bdb80ba)
-
+<br />
 
 
 --Total Business Revenue<br />
 SQL Query:<br />
 ![Screenshot from 2024-02-07 00-08-59](https://github.com/SavvyTechGal/simplify-ecom/assets/83670808/172c8854-e1c4-46d0-b861-5baf1f169ad2)
-
+<br />
 Results from Query:<br />
 ![Screenshot from 2024-02-07 00-09-28](https://github.com/SavvyTechGal/simplify-ecom/assets/83670808/2111a304-b28c-4b90-ab65-48644990ffec)
-
+<br />
 
 
 --AVG Monthly Revenue<br />
 SQL Query:<br />
 ![Screenshot from 2024-02-07 00-19-35](https://github.com/SavvyTechGal/simplify-ecom/assets/83670808/ab5002e9-9665-40f2-a53d-6c610d9d26b9)
-
+<br />
 Results from Query:<br />
 ![Screenshot from 2024-02-07 00-20-06](https://github.com/SavvyTechGal/simplify-ecom/assets/83670808/28a79068-4ac1-4e81-a30e-820b598c11ea)
-
+<br />
 
 
 --Revenue By Year<br />
 SQL Query:<br />
 ![Screenshot from 2024-02-07 00-16-44](https://github.com/SavvyTechGal/simplify-ecom/assets/83670808/58e84735-7360-4d94-9df1-f26ea9e8a6f0)
-
+<br />
 Results from Query:<br />
 ![Screenshot from 2024-02-07 00-18-17](https://github.com/SavvyTechGal/simplify-ecom/assets/83670808/2baf0d93-c28c-4e61-aefd-76ed6c405a76)
 <br />
