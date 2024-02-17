@@ -14,7 +14,8 @@ select
 business_id,  
 sum(gross_revenue) as Total_Business_Revenue
 from business_order_lineitem 
-group by 1;
+group by 1
+ORDER BY 2 ASC;
 
 --AVG Monthly Revenue
 select 
@@ -25,7 +26,8 @@ from business_order_lineitem as boi
 Left join business_order as bo 
 on bo.business_id = boi.business_id and 
 Bo.order_id = boi.order_id
-group by 1;
+group by 1
+ORDER BY 3 ASC;
 
 
 --Revenue By Year
@@ -37,4 +39,5 @@ from business_order_lineitem as boi
 Left join business_order as bo 
 on bo.business_id = boi.business_id and 
 Bo.order_id = boi.order_id
-group by 1, 2;
+group by 1, 2
+ORDER BY 2 ASC, 3 ASC;
